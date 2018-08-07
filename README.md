@@ -1,0 +1,1 @@
+# all-language-phonemic-alphabet
