@@ -4,6 +4,8 @@
 using namespace std;
 
 void main(){
+	setlocale(LC_ALL, "");
+
 	//Из https://habr.com/post/107679/
 	ofstream ofile("input.txt", std::ios::binary);
 	ostreambuf_iterator<char> writer(ofile);
@@ -21,22 +23,14 @@ void main(){
 	++writer = 0x21; // !
 	ofile.close();
 
-	int n = 0;
-	fstream F;
-	char a;
-	F.open("input.txt");
-	if (F)
-	{
-		while (!F.eof())
-		{
-			F>>a;
-			cout<<a;
-			n++;
-		}
-		F.close();
-		cout << endl << "n=" << n << endl;
-	}
 
+	std::ifstream in("input.txt");
+	std::string contents((std::istreambuf_iterator<char>(in)), 
+		std::istreambuf_iterator<char>());
 
+	for(int i = 0; i < contents.length(); i++) 
+		std::cout << contents.at(i);
+
+	std::cout << std::endl;
 	system("pause");
 }
